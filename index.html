@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Moneybag App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+        #app, #prediction {
+            display: none;
+            margin-top: 20px;
+        }
+        input[type="password"], input[type="text"] {
+            padding: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Acesso ao Moneybag</h1>
+    <div id="login">
+        <p>Insira o código VIP para acessar:</p>
+        <input type="password" id="vipCode" placeholder="Código VIP">
+        <br>
+        <button onclick="verificarCodigo()">Entrar</button>
+        <p id="mensagem" style="color: red;"></p>
+    </div>
+
+    <div id="app">
+        <h2>🎯 Previsão do Voo Aleatório</h2>
+        <button onclick="mostrarPrevisao()">Gerar Previsão</button>
+        <div id="prediction"></div>
+    </div>
+
+    <script>
+        const codigoCorreto = "VIP-MONEY";
+
+        function verificarCodigo() {
+            const input = document.getElementById("vipCode").value;
+            if (input === codigoCorreto) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("app").style.display = "block";
+            } else {
+                document.getElementById("mensagem").innerText = "Código incorreto!";
+            }
+        }
+
+        function mostrarPrevisao() {
+            const resultados = [
+                "📈 Previsão: 2.35x - Alta chance!",
+                "📉 Previsão: 1.20x - Risco elevado.",
+                "🔥 Previsão: 3.10x - Ótima oportunidade!",
+                "⚠️ Previsão: 1.75x - Pode subir mais.",
+                "🚀 Previsão: 4.50x - Aproveite agora!"
+            ];
+            const sorteio = resultados[Math.floor(Math.random() * resultados.length)];
+            document.getElementById("prediction").innerText = sorteio;
+            document.getElementById("prediction").style.display = "block";
+        }
+    </script>
+</body>
+</html>
